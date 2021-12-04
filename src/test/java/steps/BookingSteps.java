@@ -2,6 +2,7 @@ package steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pages.BookingHomePage;
@@ -33,4 +34,15 @@ public class BookingSteps extends BaseTest {
         bookingHomePage.selectLanguage(language);
     }
 
+    @And("I add destination {string}")
+    public void iAddDestination(String location) {
+        BookingHomePage bookingHomePage = new BookingHomePage(driver, wdWait);
+        bookingHomePage.enterLocation(location);
+    }
+
+    @And("I add start and end date {string} {string}")
+    public void iAddStartAndEndDate(String start, String end) {
+        BookingHomePage bookingHomePage = new BookingHomePage(driver, wdWait);
+        bookingHomePage.selectDates(start, end);
+    }
 }
